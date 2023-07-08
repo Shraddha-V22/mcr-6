@@ -12,7 +12,7 @@ export default function RestaurantInfo({
 }) {
   const [open, setOpen] = useState(false);
 
-  const menuNames = menu?.map(({ name }) => name).join(",");
+  const menuNames = menu?.map(({ name }) => name).join(", ");
   return (
     <div className="mb-4 flex flex-col gap-2 p-2">
       <h1 className="text-4xl font-semibold">{name}</h1>
