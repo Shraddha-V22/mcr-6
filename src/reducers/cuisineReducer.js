@@ -36,6 +36,12 @@ export const cuisineReducer = (state, { type, payload }) => {
             : rest
         ),
       };
+    case CUISINE.CLEAR_FILTER:
+      return {
+        ...state,
+        filteredRestaurants: [],
+        selectedCuisine: "",
+      };
     default:
       return state;
   }
