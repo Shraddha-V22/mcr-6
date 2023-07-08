@@ -1,0 +1,4 @@
+export const CUISINE = {
+  SELECT: "SELECT",
+  SUBMIT_REVIEW: "SUBMIT_REVIEW",
+};
