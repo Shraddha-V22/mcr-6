@@ -31,8 +31,14 @@ export default function ReviewModal({ restaurantId, setOpen, open }) {
 
   return (
     open && (
-      <section className="fixed inset-0 grid h-[100vh] w-[100vw] place-items-center bg-black/20">
-        <section className="flex w-fit flex-col items-center gap-4 rounded-md bg-orange-600 p-4 text-white">
+      <section
+        onClick={() => setOpen(false)}
+        className="fixed inset-0 grid h-[100vh] w-[100vw] place-items-center bg-black/20"
+      >
+        <section
+          onClick={(e) => e.stopPropagation()}
+          className="flex w-fit max-w-[400px] flex-col items-center gap-4 rounded-md bg-orange-600 p-4 text-white"
+        >
           <div className="flex w-full justify-between border-b pb-1">
             <div></div>
             <h1 className="text-lg">Add your review</h1>
@@ -41,26 +47,27 @@ export default function ReviewModal({ restaurantId, setOpen, open }) {
             </button>
           </div>
           <div className="flex flex-col gap-2">
-            <div className="flex gap-2">
+            <div className="grid grid-cols-[100px_1fr] gap-2">
               <label htmlFor="revName">Name:</label>
               <input
                 type="text"
                 name="revName"
                 id="revName"
-                className="rounded-md p-1 indent-1 text-black"
+                className="w-full rounded-md p-1 indent-1 text-black"
                 placeholder="Name"
                 onChange={inputChangeHandler}
+                autoComplete="off"
               />
             </div>
-            <div className="flex gap-2">
+            <div className="grid grid-cols-[100px_1fr] gap-2">
               <label htmlFor="rating">Rating:</label>
               <select
                 name="rating"
                 id="rating"
-                className="rounded-md text-black"
+                className="rounded-md p-1 text-black"
                 onChange={inputChangeHandler}
               >
-                <option>select</option>
+                <option>Select</option>
                 {Array(5)
                   .fill(0)
                   .map((el, index) => (
@@ -70,7 +77,7 @@ export default function ReviewModal({ restaurantId, setOpen, open }) {
                   ))}
               </select>
             </div>
-            <div className="flex gap-2">
+            <div className="grid grid-cols-[100px_1fr] gap-2">
               <label htmlFor="comment">Comment:</label>
               <textarea
                 name="comment"
@@ -86,7 +93,7 @@ export default function ReviewModal({ restaurantId, setOpen, open }) {
           {errorMsg && <p>{errorMsg}</p>}
           <button
             onClick={submitReviewHandler}
-            className="rounded-md bg-white px-4 py-2 text-black"
+            className="rounded-md bg-white px-4 py-2 text-black active:bg-orange-100"
           >
             Submit
           </button>
