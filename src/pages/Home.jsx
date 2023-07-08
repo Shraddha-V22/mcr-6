@@ -31,16 +31,9 @@ export default function Home() {
             />
           ))}
         </div>
-        {selectedCuisine && filteredRestaurants.length > 0 ? (
+        {selectedCuisine && (
           <p className="mt-4 text-lg">
             Showing result for{" "}
-            <span className="font-semibold capitalize">
-              {foundSelectedCuisine?.name} cuisine
-            </span>
-          </p>
-        ) : (
-          <p className="mt-4 text-lg">
-            No result for{" "}
             <span className="font-semibold capitalize">
               {foundSelectedCuisine?.name} cuisine
             </span>
