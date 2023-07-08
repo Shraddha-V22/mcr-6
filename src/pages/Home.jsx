@@ -3,12 +3,17 @@ import { useCuisineData } from "../contexts/cuisineDataProvider";
 import Button from "../components/Button";
 import RestaurantRow from "../components/RestaurantRow";
 import { CUISINE } from "../utils/reducerTypes";
+import { useMemo } from "react";
 
 export default function Home() {
   const {
-    cuisinesData: { cuisines, restaurants, filteredRestaurants },
+    cuisinesData: { cuisines, filteredRestaurants, selectedCuisine },
     dispatch,
   } = useCuisineData();
+
+  const foundSelectedCuisine = useMemo(() => {
+    return cuisines?.find(({ id }) => id === selectedCuisine);
+  }, [selectedCuisine]);
 
   return (
     <section className="my-8 flex flex-col items-center gap-4 text-center">
@@ -26,6 +31,21 @@ export default function Home() {
             />
           ))}
         </div>
+        {selectedCuisine && filteredRestaurants.length > 0 ? (
+          <p className="mt-4 text-lg">
+            Showing result for{" "}
+            <span className="font-semibold capitalize">
+              {foundSelectedCuisine?.name} cuisine
+            </span>
+          </p>
+        ) : (
+          <p className="mt-4 text-lg">
+            No result for{" "}
+            <span className="font-semibold capitalize">
+              {foundSelectedCuisine?.name} cuisine
+            </span>
+          </p>
+        )}
       </div>
       <section className="mt-8 flex flex-col gap-8 text-left">
         {filteredRestaurants?.map((restaurant) => (

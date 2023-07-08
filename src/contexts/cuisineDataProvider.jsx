@@ -11,6 +11,7 @@ const initialCuisineData = {
   restaurants: [...restaurantsData],
   cuisines: [...cuisineData],
   filteredRestaurants: [],
+  selectedCuisine: "",
 };
 
 export default function CuisineDataProvider({ children }) {

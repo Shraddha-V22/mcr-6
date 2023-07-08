@@ -8,6 +8,7 @@ export const cuisineReducer = (state, { type, payload }) => {
         filteredRestaurants: state.restaurants.filter(
           ({ cuisine_id }) => cuisine_id === payload
         ),
+        selectedCuisine: payload,
       };
     case CUISINE.SUBMIT_REVIEW:
       return {
